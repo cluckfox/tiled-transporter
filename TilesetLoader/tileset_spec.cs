@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
 
-namespace tiled_transporter {
-    namespace TilesetLoader {
-        struct tileset_spec {
+namespace tiled_transporter
+{
+    namespace TilesetLoader
+    {
+        struct tileset_spec
+        {
             char[] namespec;
 
             public tileset_spec(char[] namespec, ushort countspec) : this()
