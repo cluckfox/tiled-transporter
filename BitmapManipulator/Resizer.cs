@@ -7,7 +7,7 @@ namespace tiled_transporter
 
         /// <summary>Class <c>Resizer</c> represents parameters for a
         /// tile-to-tile transformation.</summary>
-        class Resizer
+        struct Resizer
         {
             public enum ResizeOps : byte
             {
@@ -17,13 +17,11 @@ namespace tiled_transporter
                 R1ROT = 0x04,
                 R2ROT = 0x08
             }
-            ResizeOps ops = ResizeOps.NOP;
-            byte targetW = 0x10;
-            byte targetH = 0x10;
-            public Resizer()
-            {
+            
+            byte targetW;
+            byte targetH;
+            ResizeOps ops;
 
-            }
             public Resizer(byte targetW, byte targetH, ResizeOps ops)
             {
                 this.targetW = targetW;
