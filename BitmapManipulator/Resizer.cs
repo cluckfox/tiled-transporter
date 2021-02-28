@@ -12,10 +12,9 @@ namespace tiled_transporter
             public enum ResizeOps : byte
             {
                 NOP = 0x00,
-                HFLIP = 0x01,
+                HFLIP = 0x04,
                 VFLIP = 0x02,
-                R1ROT = 0x04,
-                R2ROT = 0x08
+                R1ROT = 0x01
             }
             
             byte targetW;
