@@ -1,36 +1,33 @@
 using System;
 using System.Collections.Generic;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace tiled_transporter
 {
     namespace TilesetLoader
     {
+        [XmlRootAttribute("tileset")]
         struct tileset_spec
         {
             char[] namespec;
+            ushort countspec;
+            tile_spec[] tiles;
 
-            public tileset_spec(char[] namespec, ushort countspec) : this()
+            public tileset_spec(char[] namespec, ushort countspec, tile_spec[] tiles) : this()
             {
                 this.namespec = namespec;
                 this.countspec = countspec;
+                this.tiles = tiles;
             }
 
-            ushort countspec;
 
+            [XmlAttribute("name")]
             public char[] Namespec { get => namespec; set => namespec = value; }
+            [XmlAttribute("tilecount")]
             public ushort Countspec { get => countspec; set => countspec = value; }
-
-            public override bool Equals(object obj)
-            {
-                return obj is tileset_spec spec &&
-                       EqualityComparer<char[]>.Default.Equals(namespec, spec.namespec) &&
-                       countspec == spec.countspec;
-            }
-
-            public override int GetHashCode()
-            {
-                return HashCode.Combine(namespec, countspec);
-            }
+            [XmlArrayAttribute("tiles")]
+            internal tile_spec[] Tiles { get => tiles; set => tiles = value; }
         }
     }
 }

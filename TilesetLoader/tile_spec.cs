@@ -1,41 +1,25 @@
 using System;
 using System.Collections.Generic;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace tiled_transporter {
     namespace TilesetLoader {
+
         struct tile_spec {
-            char[] filespec;
-
-            public tile_spec(char[] filespec, ushort widthspec, ushort heightspec, ushort idspec) : this()
-            {
-                this.filespec = filespec;
-                this.widthspec = widthspec;
-                this.heightspec = heightspec;
-                this.idspec = idspec;
-            }
-
-            ushort widthspec;
-            ushort heightspec;
             ushort idspec;
+            image_spec image_spec;
 
-            public char[] Filespec { get => filespec; set => filespec = value; }
-            public ushort Widthspec { get => widthspec; set => widthspec = value; }
-            public ushort Heightspec { get => heightspec; set => heightspec = value; }
+            public tile_spec(ushort idspec, image_spec image_spec)
+            {
+                this.idspec = idspec;
+                this.image_spec = image_spec;
+            }
+
+            [XmlAttribute("id")]
             public ushort Idspec { get => idspec; set => idspec = value; }
-
-            public override bool Equals(object obj)
-            {
-                return obj is tile_spec spec &&
-                       EqualityComparer<char[]>.Default.Equals(filespec, spec.filespec) &&
-                       widthspec == spec.widthspec &&
-                       heightspec == spec.heightspec &&
-                       idspec == spec.idspec;
-            }
-
-            public override int GetHashCode()
-            {
-                return HashCode.Combine(filespec, widthspec, heightspec, idspec);
-            }
+            [XmlElement("image")]
+            internal image_spec Image_spec { get => image_spec; set => image_spec = value; }
         }
     }
 }
