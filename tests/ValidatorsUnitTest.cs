@@ -8,39 +8,48 @@ namespace tiled_transporter_xunit
     {
         private TestSquareFilter squareFilter = new TestSquareFilter();
         private TestBase2Filter base2Filter = new TestBase2Filter();
-        [Fact]
-        public void SquareFilterAcceptsSquare()
+        [Theory]
+        [InlineData(32,32)]
+        [InlineData(1,1)]
+        [InlineData(699,699)]
+        public void SquareFilterAcceptsSquare(int height, int width)
         {
-            var result = this.squareFilter.test(32, 32);
+            var result = this.squareFilter.test(height, width);
             Assert.True(result);
         }
 
-        [Fact]
-        public void SquareFilterRejectsNotSquare()
+        [Theory]
+        [InlineData(32,31)]
+        [InlineData(1,106)]
+        [InlineData(755,756)]
+        public void SquareFilterRejectsNotSquare(int height, int width)
         {
-            var result = this.squareFilter.test(16,31);
+            var result = this.squareFilter.test(height, width);
             Assert.False(result);
         }
 
-        [Fact]
-        public void SquareFilterRejectsZero()
+        [Theory]
+        [InlineData(0,1)]
+        [InlineData(1,0)]
+        public void SquareFilterRejectsZero(int height, int width)
         {
-            var result = this.squareFilter.test(0,0);
+            var result = this.squareFilter.test(height, width);
             Assert.False(result);
         }
 
-        [Fact]
-        public void SquareFilterRejectsNegative()
+        [Theory]
+        [InlineData(-32,-32)]
+        [InlineData(-1, 1)]
+        [InlineData(1, -1)]
+        public void SquareFilterRejectsNegative(int height, int width)
         {
-            var result = this.squareFilter.test(-32,-32);
+            var result = this.squareFilter.test(height, width);
             Assert.False(result);
         }
 
         [Theory]
         [InlineData(1)]
         [InlineData(2)]
-        [InlineData(4)]
-        [InlineData(256)]
         [InlineData(131072)]
         public void Base2FilterAcceptsPowersOfTwo(int dat)
         {
@@ -51,7 +60,6 @@ namespace tiled_transporter_xunit
         [Theory]
         [InlineData(3)]
         [InlineData(6)]
-        [InlineData(257)]
         [InlineData(131074)]
         public void Base2FilterRejectsNonPowersOfTwo(int dat)
         {
