@@ -1,3 +1,4 @@
+using System;
 using System.Xml;
 using System.Xml.Serialization;
 namespace tiled_transporter
@@ -8,9 +9,9 @@ namespace tiled_transporter
         {
             ushort heightspec;
             ushort widthspec;
-            char[] sourcespec;
+            String sourcespec;
 
-            public image_spec(ushort heightspec, ushort widthspec, char[] sourcespec)
+            public image_spec(ushort heightspec, ushort widthspec, String sourcespec)
             {
                 this.heightspec = heightspec;
                 this.widthspec = widthspec;
@@ -22,7 +23,7 @@ namespace tiled_transporter
             [XmlAttribute("width")]
             public ushort Widthspec { get => widthspec; set => widthspec = value; }
             [XmlAttribute("source")]
-            public char[] Sourcespec { get => sourcespec; set => sourcespec = value; }
+            public String Sourcespec { get => sourcespec; set => sourcespec = value; }
         }
     }
 }

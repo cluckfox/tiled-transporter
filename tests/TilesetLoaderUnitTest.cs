@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 using TestTileset = tiled_transporter.TilesetLoader.tileset_spec;
 using TestTile = tiled_transporter.TilesetLoader.tile_spec;
@@ -20,11 +21,9 @@ namespace tiled_transporter_xunit
         [Fact]
         public void TilesetInitConstructorWorks()
         {
-            char[] testName;
-            TestTile[] emptyTiles = {};
+            List<TestTile> emptyTiles = new List<TestTile>();
 
-            String x = "test-tileset-name";
-            testName = x.ToCharArray();
+            String testName = "test-tileset-name";
             ushort testCount = 11;
 
             TestTileset testTileset = new TestTileset(testName, testCount, emptyTiles);
@@ -70,7 +69,7 @@ namespace tiled_transporter_xunit
         {
             ushort testHeight = 11;
             ushort testWidth = 650;
-            char[] testSource = { 'a', 'b', 'c' };
+            String testSource = "abc";
 
             TestImage testImage = new TestImage(testHeight, testWidth, testSource);
 
