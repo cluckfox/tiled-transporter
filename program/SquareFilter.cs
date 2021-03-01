@@ -2,11 +2,11 @@ using System;
 namespace tiled_transporter
 {
 
-    class SquareFilter<T> : IValidator<T> where T : IComparable
+    public class SquareFilter<T> : IValidator<T> where T : IComparable
     {
         public bool test(T x, T y)
         {
-            return x.Equals(y);
+            return x.CompareTo(0) > 0 && x.Equals(y);
         }
 
         public void check(T x, T y)
