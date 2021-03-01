@@ -1,5 +1,3 @@
 .vscode/*
-program/obj/*
-program/bin/*
-tests/obj/*
-tests/bin/*
+**/bin/*
+**/obj/*
