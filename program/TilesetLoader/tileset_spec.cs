@@ -8,7 +8,7 @@ namespace tiled_transporter
     namespace TilesetLoader
     {
         [XmlRootAttribute("tileset")]
-        struct tileset_spec
+        public struct tileset_spec
         {
             char[] namespec;
             ushort countspec;
@@ -27,7 +27,7 @@ namespace tiled_transporter
             [XmlAttribute("tilecount")]
             public ushort Countspec { get => countspec; set => countspec = value; }
             [XmlArrayAttribute("tiles")]
-            internal tile_spec[] Tiles { get => tiles; set => tiles = value; }
+            public tile_spec[] Tiles { get => tiles; set => tiles = value; }
         }
     }
 }

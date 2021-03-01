@@ -6,20 +6,20 @@ using System.Xml.Serialization;
 namespace tiled_transporter {
     namespace TilesetLoader {
 
-        struct tile_spec {
+        public struct tile_spec {
             ushort idspec;
-            image_spec image_spec;
+            image_spec imagespec;
 
-            public tile_spec(ushort idspec, image_spec image_spec)
+            public tile_spec(ushort idspec, image_spec imagespec)
             {
                 this.idspec = idspec;
-                this.image_spec = image_spec;
+                this.imagespec = imagespec;
             }
 
             [XmlAttribute("id")]
             public ushort Idspec { get => idspec; set => idspec = value; }
             [XmlElement("image")]
-            internal image_spec Image_spec { get => image_spec; set => image_spec = value; }
+            public image_spec Imagespec { get => imagespec; set => imagespec = value; }
         }
     }
 }

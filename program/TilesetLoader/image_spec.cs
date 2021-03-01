@@ -4,7 +4,7 @@ namespace tiled_transporter
 {
     namespace TilesetLoader
     {
-        struct image_spec
+        public struct image_spec
         {
             ushort heightspec;
             ushort widthspec;
