@@ -2,7 +2,7 @@ using System;
 
 namespace tiled_transporter{
     namespace MapLoader{
-        struct tile_spec
+        public struct tile_spec
         {
             UInt32 dataspec;
 
