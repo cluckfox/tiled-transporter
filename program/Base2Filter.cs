@@ -2,7 +2,7 @@ using System;
 
 namespace tiled_transporter
 {
-    class Base2Filter<T> : IValidator<T> where T : IConvertible
+    public class Base2Filter<T> : IValidator<T> where T : IConvertible
     {
         public void check(T x, T y)
         {
@@ -19,8 +19,8 @@ namespace tiled_transporter
 
         private bool isBase2(T a)
         {
-            var dblA = Convert.ToDouble(a);
-            return Math.Ceiling(Math.Log2(dblA)) == Math.Floor(Math.Log2(dblA));
+            var bigA = Convert.ToUInt64(a);
+            return (Math.Ceiling(Math.Log2(bigA)) == Math.Floor(Math.Log2(bigA)));
         }
     }
 }
