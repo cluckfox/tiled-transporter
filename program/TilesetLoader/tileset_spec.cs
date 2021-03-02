@@ -10,25 +10,29 @@ namespace tiled_transporter
         [XmlRoot("tileset")]
         public struct tileset_spec
         {
-            String namespec;
-            ushort countspec;
-            List<tile_spec> tiles;
-
-            public tileset_spec(String namespec, ushort countspec, List<tile_spec> tiles) : this()
+            public struct image_spec
             {
-                this.namespec = namespec;
-                this.countspec = countspec;
-                this.tiles = tiles;
+                [XmlAttribute("height")]
+                public UInt32 height;
+                [XmlAttribute("width")]
+                public UInt32 width;
+                [XmlAttribute("source")]
+                public String source;
             }
-
-
+            public struct tile_spec
+            {
+                [XmlAttribute("id")]
+                public UInt32 id;
+                [XmlElement("image")]
+                public image_spec image;
+            }
             [XmlAttribute("name")]
-            public String Namespec { get => namespec; set => namespec = value; }
+            public String name;
             [XmlAttribute("tilecount")]
-            public ushort Countspec { get => countspec; set => countspec = value; }
-            
+            public UInt32 tileCount;
             [XmlElement("tile")]
-            public List<tile_spec> Tiles { get => tiles; set => tiles = value; }
+            public List<tile_spec> tiles;
+
         }
     }
 }

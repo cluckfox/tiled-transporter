@@ -13,41 +13,23 @@ namespace tiled_transporter
             public struct tileset_spec
             {
                 [XmlAttribute("firstgid")]
-                public UInt32 firstgidspec;
+                public UInt32 firstGid;
                 [XmlAttribute("source")]
-                public String tilesetspec;
+                public String tileset;
             }
 
             public struct layer_spec
             {
                 [XmlAttribute("name")]
-                public String namespec;
+                public String name;
                 [XmlElement("data")]
-                public String cdataspec;
+                public String cdata;
             }
 
             [XmlElement("tileset")]
             public tileset_spec tileset;
             [XmlElement("layer")]
             public layer_spec layer;
-            public map_spec(String namespec, String tilesetspec, UInt32 firstgidspec, String cdataspec)
-            {
-                this.tileset = new tileset_spec();
-                this.layer = new layer_spec();
-                this.layer.namespec = namespec;
-                this.tileset.tilesetspec = tilesetspec;
-                this.tileset.firstgidspec = firstgidspec;
-                this.layer.cdataspec = cdataspec;
-            }
-
-
-            public String Namespec { get => layer.namespec; set => layer.namespec = value; }
-
-            public String Tilesetspec { get => tileset.tilesetspec; set => tileset.tilesetspec = value; }
-
-            public UInt32 Firstgidspec { get => tileset.firstgidspec; set => tileset.firstgidspec = value; }
-
-            public String Cdataspec { get => layer.cdataspec; set => layer.cdataspec = value; }
         }
     }
 }

@@ -4,27 +4,26 @@ namespace tiled_transporter{
     namespace MapLoader{
         public struct tile_spec
         {
-            UInt32 dataspec;
+            public UInt32 data;
 
             public tile_spec(uint dataspec)
             {
-                this.dataspec = dataspec;
+                this.data = dataspec;
             }
 
-            public uint Dataspec { get => dataspec; set => dataspec = value; }
-            public byte TranslateType { get => (byte)(dataspec >> 29); }
-            public uint TileGid { get => dataspec & 0x1FFFFFFF; }
+            public byte TranslateType { get => (byte)(data >> 29); }
+            public uint TileGid { get => data & 0x1FFFFFFF; }
 
 
             public override bool Equals(object obj)
             {
                 return obj is tile_spec spec &&
-                       dataspec == spec.dataspec;
+                       data == spec.data;
             }
 
             public override int GetHashCode()
             {
-                return HashCode.Combine(dataspec);
+                return HashCode.Combine(data);
             }
         }
     }

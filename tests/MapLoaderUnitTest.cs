@@ -11,26 +11,10 @@ namespace tiled_transporter_xunit
         {
             TestMap testMap = new TestMap();
 
-            Assert.Null(testMap.Namespec);
-            Assert.Null(testMap.Tilesetspec);
-            Assert.Null(testMap.Cdataspec);
-            Assert.Equal((UInt32)0, testMap.Firstgidspec);
-        }
-
-        [Fact]
-        public void MapSpecInitConstructorWorks()
-        {
-            String testName = "mapname";
-            String testTileset = "tilesetname";
-            String testCdata = "0,0,0";
-            UInt32 testGid = 155;
-
-            TestMap testMap = new TestMap(testName, testTileset, testGid, testCdata);
-
-            Assert.Equal(testName, testMap.Namespec);
-            Assert.Equal(testTileset, testMap.Tilesetspec);
-            Assert.Equal(testCdata, testMap.Cdataspec);
-            Assert.Equal(testGid, testMap.Firstgidspec);
+            Assert.Null(testMap.layer.name);
+            Assert.Null(testMap.tileset.tileset);
+            Assert.Null(testMap.layer.cdata);
+            Assert.Equal((UInt32)0, testMap.tileset.firstGid);
         }
 
         [Fact]
@@ -38,7 +22,7 @@ namespace tiled_transporter_xunit
         {
             TestTile testTile = new TestTile();
 
-            Assert.Equal((UInt32)0, testTile.Dataspec);
+            Assert.Equal((UInt32)0, testTile.data);
         }
 
         [Fact]
@@ -48,7 +32,7 @@ namespace tiled_transporter_xunit
 
             TestTile testTile = new TestTile(testData);
 
-            Assert.Equal(testData, testTile.Dataspec);
+            Assert.Equal(testData, testTile.data);
         }
 
         [Theory]
