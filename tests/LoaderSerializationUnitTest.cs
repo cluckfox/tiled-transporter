@@ -36,10 +36,15 @@ namespace tiled_transporter_xunit
                 mapSpec = (MapSpec)serializer.Deserialize(fileStream);
             }
 
-            Assert.Equal("Tile Layer 1", mapSpec.layer.name);
+            Assert.NotEmpty(mapSpec.layers);
+            Assert.Equal("Tile Layer 1", mapSpec.layers[0].name);
+            Assert.Equal((UInt32)1, mapSpec.layers[0].id);
+            Assert.Equal("csv", mapSpec.layers[0].data.encoding);
+            Assert.NotEmpty(mapSpec.layers[0].data.cdata);
             Assert.Equal((UInt32)1, mapSpec.tileset.firstGid);
             Assert.Equal("../Tilesets/8-bit-dungeon-cc0.tsx", mapSpec.tileset.tileset);
-            Assert.NotEmpty(mapSpec.layer.cdata);
+            
+            
         }
     }
 }

@@ -10,6 +10,13 @@ namespace tiled_transporter
         [XmlRoot("map")]
         public struct map_spec
         {
+            public struct data_spec
+            {
+                [XmlAttribute("encoding")]
+                public String encoding;
+                [XmlText]
+                public String cdata;
+            }
             public struct tileset_spec
             {
                 [XmlAttribute("firstgid")]
@@ -20,16 +27,19 @@ namespace tiled_transporter
 
             public struct layer_spec
             {
+                [XmlAttribute("id")]
+                public UInt32 id;
                 [XmlAttribute("name")]
                 public String name;
+
                 [XmlElement("data")]
-                public String cdata;
+                public data_spec data;
             }
 
             [XmlElement("tileset")]
             public tileset_spec tileset;
             [XmlElement("layer")]
-            public layer_spec layer;
+            public List<layer_spec> layers;
         }
     }
 }

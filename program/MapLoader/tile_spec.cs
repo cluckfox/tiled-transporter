@@ -2,7 +2,7 @@ using System;
 
 namespace tiled_transporter{
     namespace MapLoader{
-        public struct tile_spec
+        public struct tile_spec : IComparable<tile_spec>, IComparable<UInt32>
         {
             public UInt32 data;
 
@@ -14,16 +14,14 @@ namespace tiled_transporter{
             public byte TranslateType { get => (byte)(data >> 29); }
             public uint TileGid { get => data & 0x1FFFFFFF; }
 
-
-            public override bool Equals(object obj)
+            public int CompareTo(uint other)
             {
-                return obj is tile_spec spec &&
-                       data == spec.data;
+                return data.CompareTo(other);
             }
 
-            public override int GetHashCode()
+            public int CompareTo(tile_spec other)
             {
-                return HashCode.Combine(data);
+                return CompareTo(other.data);
             }
         }
     }

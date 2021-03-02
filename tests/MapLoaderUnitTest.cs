@@ -2,6 +2,7 @@ using System;
 using Xunit;
 using TestMap = tiled_transporter.MapLoader.map_spec;
 using TestTile = tiled_transporter.MapLoader.tile_spec;
+using System.Collections.Generic;
 namespace tiled_transporter_xunit
 {
     public class MapLoaderUnitTest
@@ -11,9 +12,8 @@ namespace tiled_transporter_xunit
         {
             TestMap testMap = new TestMap();
 
-            Assert.Null(testMap.layer.name);
+            Assert.Null(testMap.layers);
             Assert.Null(testMap.tileset.tileset);
-            Assert.Null(testMap.layer.cdata);
             Assert.Equal((UInt32)0, testMap.tileset.firstGid);
         }
 
